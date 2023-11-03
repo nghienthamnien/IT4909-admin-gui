@@ -1,0 +1,8 @@
+#detail {
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    top: 56px;
+    left: 16rem;
+    background-color: pink;
+}

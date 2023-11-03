@@ -1,0 +1,6 @@
+dist
+vite.config.js
+assets
+.vscode
+package.json
+package-lock.json
