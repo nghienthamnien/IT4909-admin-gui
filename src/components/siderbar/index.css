@@ -1,0 +1,60 @@
+.siderbar {
+    top: 56px;
+    bottom: -56px;
+    position: fixed;
+    width: 16rem;
+    background-color: #f7f7f7;
+    border-right: solid 1px #e3e3e3;
+    display: flex;
+    flex-direction: column;
+}
+.siderbar ul {
+    height: 100%;
+    padding-left: 16px;
+    margin-right: 8px;
+}
+.siderbar-item {
+    cursor: pointer;
+    padding-left: 8px;
+    display: flex;
+    align-items: center;
+}
+.siderbar-item:hover,
+.siderbar-item:focus-within {
+    box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.6), 0 1px 2px hsla(0, 0%, 0%, 0.2);
+    border-radius: 5px;
+    background-color: rgba(235, 235, 235, 0.795);
+}
+.siderbar-item-up,
+.siderbar-item-down {
+    font-size: x-small;
+    position: absolute;
+    right: 16px;
+}
+.siderbar > ul > :last-child {
+    position: absolute;
+    bottom: 64px;
+    width: 231.2px;
+}
+.siderbar-item-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}
+.siderbar-item,
+.siderbar-submenu-item {
+    line-height: 35px;
+    font-weight: 600;
+}
+.siderbar-item-text {
+    color: #121212;
+}
+.siderbar-submenu-item {
+    padding-left: 16px;
+}
+.siderbar-submenu-item:hover,
+.siderbar-submenu-item:focus-within {
+    box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.6), 0 1px 2px hsla(0, 0%, 0%, 0.2);
+    border-radius: 5px;
+    background-color: rgba(235, 235, 235, 0.795);
+}
