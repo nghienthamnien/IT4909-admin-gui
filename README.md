@@ -1,4 +1,4 @@
-# clothing-store-gui
+# admin-gui
 ## Môi trường:
 
   Nodejs
