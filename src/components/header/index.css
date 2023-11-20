@@ -10,11 +10,11 @@
     -webkit-box-shadow: 0 1px 4px 0 rgba(74, 7478, 0.12);
     box-shadow: 0 1px 4px 0 rgba(74, 74, 78, 0.12);
     display: flex;
+    justify-content: space-between;
 }
 .header-logo {
-    position: relative;
-    margin-top: 4px;
-    margin-left: 16px;
+    align-self: center;
+    margin-left: 32px;
     width: 97px;
     height: 48px;
 }
@@ -22,4 +22,11 @@
     width: 4rem;
     height: 3rem;
     cursor: pointer;
+}
+.avatar {
+    align-self: center;
+    margin-right: 64px;
+}
+.ant-popover {
+    margin-right: 64px;
 }
