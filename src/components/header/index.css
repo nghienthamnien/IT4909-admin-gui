@@ -14,9 +14,11 @@
 }
 .header-logo {
     align-self: center;
-    margin-left: 32px;
+    margin: 0 32px;
     width: 97px;
     height: 48px;
+    display: flex;
+    justify-content: center;
 }
 .header-logo img {
     width: 4rem;
@@ -25,8 +27,18 @@
 }
 .avatar {
     align-self: center;
-    margin-right: 64px;
+    margin: 0 128px;
 }
 .ant-popover {
-    margin-right: 64px;
+    padding-right: 64px;
+    text-align: center;
+}
+.ant-card-body > div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.ant-card-head-title {
+    font-size: large;
+    color: blueviolet;
 }
