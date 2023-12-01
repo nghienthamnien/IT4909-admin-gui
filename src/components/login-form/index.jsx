@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Form, Input } from 'antd';
-import { loginSuccess } from '../../slice/authsSlice';
+import { updateAuthenticate } from '../../slice/authsSlice';
 import { useDispatch } from 'react-redux';
-import { useLocation, Navigate, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './index.css';
 const App = () => {
     const dispatch = useDispatch();
     const location = useLocation();
     const navigate = useNavigate();
-    const { prevPath } = location.state;
+    const prevPath = location.state ? location.state.prevPath : '/';
     const onFinish = (values) => {
         console.log('Received values of form: ', values);
         const user = { ...values };
@@ -22,11 +22,18 @@ const App = () => {
             );
             console.log(data);
             if (data.success) {
-                const { accessToken } = data.payload;
-                await localStorage.setItem('auth_token', accessToken);
-                dispatch(loginSuccess(true));
+                const { accessToken, adminName, adminId } = data.payload;
+                localStorage.setItem('auth_token', accessToken);
+                localStorage.setItem(
+                    'user_info',
+                    JSON.stringify({
+                        name: adminName,
+                        user_id: adminId,
+                    }),
+                );
+                dispatch(updateAuthenticate(true));
                 console.log(prevPath);
-                return prevPath ? navigate(`${prevPath}`) : navigate('/');
+                navigate(`${prevPath}`);
             }
         })();
     };
@@ -36,7 +43,7 @@ const App = () => {
             className="login-form"
             onFinish={onFinish}
             labelCol={{ span: 2 }}
-            wrapperCol={{ span: 15, offset: 4 }}
+            wrapperCol={{ span: 12, offset: 6 }}
             style={{ minWidth: 600 }}
             size={'large'}
         >
@@ -69,14 +76,14 @@ const App = () => {
                     placeholder="Password"
                 />
             </Form.Item>
-            <Form.Item wrapperCol={{ offset: 8 }}>
+            <Form.Item wrapperCol={{ offset: 9 }}>
                 <Button
                     type="primary"
                     htmlType="submit"
                     className="login-form-button"
-                    style={{ width: '180px' }}
+                    style={{ width: '128px', marginLeft: '16px' }}
                 >
-                    Log in
+                    Đăng nhập
                 </Button>
             </Form.Item>
             <Form.Item wrapperCol={{ offset: 10 }}>
