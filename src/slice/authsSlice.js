@@ -7,7 +7,7 @@ const authsSlice = createSlice({
     name: 'auths',
     initialState,
     reducers: {
-        loginSuccess(state, action) {
+        updateAuthenticate(state, action) {
             state.isAuthenticate = action.payload;
         },
     },
@@ -15,6 +15,6 @@ const authsSlice = createSlice({
 
 export const login = createAsyncThunk('auths/addToken', async (user) => {});
 
-export const { loginSuccess } = authsSlice.actions;
+export const { updateAuthenticate } = authsSlice.actions;
 
 export default authsSlice.reducer;

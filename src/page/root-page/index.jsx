@@ -4,6 +4,7 @@ import SiderBar from '../../components/siderbar';
 import './index.css';
 import { useSelector } from 'react-redux';
 import { Outlet, Navigate, useLocation } from 'react-router-dom';
+import Footer from '../../components/footer';
 
 const ProtectedRoute = () => {
     const isAuthenticate = useSelector((state) => state.auths.isAuthenticate);
@@ -14,6 +15,7 @@ const ProtectedRoute = () => {
             <SiderBar />
             <div id="detail">
                 <Outlet />
+                <Footer />
             </div>
         </>
     ) : (

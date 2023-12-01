@@ -5,15 +5,16 @@ import { Provider } from 'react-redux';
 import './index.css';
 import ProtectedRoute from './page/root-page';
 import DashBoard from './page/dashboard-page';
-import ErrotPage from './page/error-page';
+import ErrorPage from './page/error-page';
 import LoginPage from './page/login-page';
+import SignupPage from './page/add-employee-page';
 import store from './app/store';
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <ProtectedRoute />,
-        errorElement: <ErrotPage />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 index: true,
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'orders',
-                errorElement: <ErrotPage />,
+                errorElement: <ErrorPage />,
                 children: [
                     {
                         path: 'cancelled',
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'products',
-                errorElement: <ErrotPage />,
+                errorElement: <ErrorPage />,
                 children: [
                     {
                         path: 'new',
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'employees',
-                children: [{ path: 'new' }],
+                children: [{ path: 'new', element: <SignupPage /> }],
             },
             { path: 'setting' },
         ],

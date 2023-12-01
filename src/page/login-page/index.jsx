@@ -2,6 +2,7 @@ import './index.css';
 import LoginForm from '../../components/login-form';
 import Header from '../../components/header';
 import { setTitle } from '../../util/setTitle';
+import Footer from '../../components/footer';
 
 const LoginPage = () => {
     setTitle('Login');
@@ -18,6 +19,7 @@ const LoginPage = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     );
 };
