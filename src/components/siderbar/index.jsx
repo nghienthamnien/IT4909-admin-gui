@@ -50,8 +50,8 @@ export default function SiderBar() {
         }
         return (
             <li key={element.id}>
-                <div className="siderbar-item">
-                    <Link to={element.link} style={{ textDecoration: 'none' }}>
+                <Link to={element.link} style={{ textDecoration: 'none' }}>
+                    <div className="siderbar-item">
                         <div>
                             <img
                                 src={element.icon}
@@ -62,8 +62,8 @@ export default function SiderBar() {
                                 {element.title}
                             </span>
                         </div>
-                    </Link>
-                </div>
+                    </div>
+                </Link>
             </li>
         );
     });

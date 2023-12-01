@@ -8,7 +8,12 @@ function SubMenu({ subMenuItem }) {
         <li key={item.id} className="siderbar-submenu-item">
             <Link
                 to={item.link}
-                style={{ textDecoration: 'none', color: '#818181' }}
+                style={{
+                    textDecoration: 'none',
+                    color: '#818181',
+                    display: 'block',
+                    width: '100%',
+                }}
             >
                 {item.name}
             </Link>
