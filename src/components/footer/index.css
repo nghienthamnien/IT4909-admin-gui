@@ -7,8 +7,13 @@
     width: 100%;
     max-height: 256px;
     height: 128px;
+    border-top: 1px black dotted;
 }
-.footer-icon > a {
+.footer-icon {
+    display: flex;
+    justify-content: center;
+}
+.footer-icon > div > a {
     height: 32px;
     width: 32px;
     display: inline-block;

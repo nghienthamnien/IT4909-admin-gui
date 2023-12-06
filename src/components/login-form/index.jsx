@@ -81,7 +81,7 @@ const App = () => {
                     type="primary"
                     htmlType="submit"
                     className="login-form-button"
-                    style={{ width: '128px', marginLeft: '16px' }}
+                    style={{ width: '120px', marginLeft: '16px' }}
                 >
                     Đăng nhập
                 </Button>

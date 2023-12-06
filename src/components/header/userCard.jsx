@@ -7,8 +7,7 @@ const App = () => {
     const userName = user ? user.name : 'User Name';
     const dispatch = useDispatch();
     const handleClick = () => {
-        localStorage.removeItem('auth_token');
-        localStorage.removeItem('user_info');
+        localStorage.clear();
         dispatch(updateAuthenticate(false));
     };
     return (

@@ -5,12 +5,22 @@ import { setTitle } from '../../util/setTitle';
 const SignupPage = () => {
     setTitle('Thêm nhân viên');
     return (
-        <div className="signup">
-            <div className="form-title">
-                <h2 style={{ marginRight: '16px' }}>Thêm nhân viên</h2>
-            </div>
-            <div className="signup-form">
-                <SignupForm />
+        <div
+            style={{
+                display: 'flex',
+                paddingTop: '32px',
+                paddingBottom: '64px',
+                height: '800px',
+                justifyContent: 'center',
+            }}
+        >
+            <div className="signup">
+                <div className="signup-form-title">
+                    <h2>Thêm nhân viên</h2>
+                </div>
+                <div className="signup-form">
+                    <SignupForm />
+                </div>
             </div>
         </div>
     );

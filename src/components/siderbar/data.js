@@ -25,6 +25,8 @@ const data = [
         item: [
             { id: 1, name: 'Tất cả sản phẩm', link: 'products' },
             { id: 2, name: 'Thêm sản phẩm', link: 'products/new' },
+            { id: 3, name: 'Attributes', link: 'attributes' },
+            { id: 4, name: 'Catalogs', link: 'catalogs' },
         ],
     },
     {

@@ -1,7 +1,7 @@
 .header-bar {
     top: 0;
     left: 0;
-    position: fixed;
+    position: relative;
     width: 100%;
     min-height: 56px;
     max-height: 56px;

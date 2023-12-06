@@ -1,9 +1,11 @@
 import React from 'react';
 import { Button, Form, Input, Select } from 'antd';
+import callAPI from '../../api/callAPI';
 
 const App = () => {
-    const handleSubmit = (value) => {
-        console.log(value);
+    const handleSubmit = async (value) => {
+        const response = await callAPI.post('/auth/signup', value);
+        console.log(response);
     };
     return (
         <Form
@@ -11,8 +13,8 @@ const App = () => {
                 span: 4,
             }}
             wrapperCol={{
-                span: 14,
-                offset: 5,
+                span: 16,
+                offset: 4,
             }}
             layout="horizontal"
             style={{
@@ -52,7 +54,7 @@ const App = () => {
                     },
                 ]}
             >
-                <Input placeholder="Số điện thoại" />
+                <Input placeholder="Số điện thoại" type="tel" />
             </Form.Item>
             <Form.Item
                 name={'password'}
@@ -108,7 +110,7 @@ const App = () => {
                     htmlType="submit"
                     style={{
                         width: '128px',
-                        marginLeft: '9px',
+                        marginLeft: '10px',
                     }}
                 >
                     Tạo tài khoản

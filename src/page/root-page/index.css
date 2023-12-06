@@ -1,7 +1,11 @@
 #detail {
     bottom: 0;
     right: 0;
-    position: fixed;
+    position: relative;
     top: 56px;
     left: 16rem;
+    color: #202223;
+    height: calc(100%-56px);
+    width: calc(100% - 16rem);
+    min-height: 800px;
 }

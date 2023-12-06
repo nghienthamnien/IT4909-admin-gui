@@ -39,6 +39,8 @@ const router = createBrowserRouter([
                     },
                 ],
             },
+            { path: 'attributes', children: [{ path: 'new' }] },
+            { path: 'catalogs', children: [{ path: 'new' }] },
             {
                 path: 'customers',
             },

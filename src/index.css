@@ -1,5 +1,6 @@
 html {
     box-sizing: border-box;
+    overflow-y: scroll;
 }
 *,
 *:before,
@@ -24,6 +25,7 @@ body {
     margin: 0;
     line-height: 1.5;
     color: #121212;
+    background-color: #f0f2f5;
 }
 textarea,
 input,
