@@ -9,6 +9,7 @@ import ErrorPage from './page/error-page';
 import LoginPage from './page/login-page';
 import SignupPage from './page/add-employee-page';
 import store from './app/store';
+import CatalogPage from './page/catalog-page';
 
 const router = createBrowserRouter([
     {
@@ -40,7 +41,14 @@ const router = createBrowserRouter([
                 ],
             },
             { path: 'attributes', children: [{ path: 'new' }] },
-            { path: 'catalogs', children: [{ path: 'new' }] },
+            {
+                path: 'catalogs',
+                children: [
+                    { path: 'new' },
+                    { index: true, element: <CatalogPage /> },
+                    { path: 'edit/:id' },
+                ],
+            },
             {
                 path: 'customers',
             },

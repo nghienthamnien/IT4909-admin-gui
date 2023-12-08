@@ -10,8 +10,8 @@ const SignupPage = () => {
                 display: 'flex',
                 paddingTop: '32px',
                 paddingBottom: '64px',
-                height: '800px',
                 justifyContent: 'center',
+                overflow: 'hidden',
             }}
         >
             <div className="signup">
