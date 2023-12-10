@@ -64,3 +64,10 @@ ul li {
     margin: 0;
     position: relative;
 }
+.page-content {
+    padding: 2rem 5rem;
+    min-height: 100vh;
+    height: min-content;
+    margin: 8px 64px;
+    max-width: calc(100%-16rem);
+}
