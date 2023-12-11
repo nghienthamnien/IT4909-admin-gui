@@ -1,59 +1,72 @@
 import React, { useEffect, useState } from 'react';
-import { Space, Table } from 'antd';
+import { Badge, Button, Space, Table } from 'antd';
 import callAPI from '../../api/callAPI';
 import { Link } from 'react-router-dom';
 
-const columns = [
-    {
-        title: 'Tên thuộc tính',
-        dataIndex: 'name',
-        key: 'name',
-    },
-    {
-        title: 'Trạng thái',
-        dataIndex: 'status',
-        key: 'status',
-        width: '25%',
-    },
-    {
-        title: 'URL key',
-        dataIndex: 'url_key',
-        width: '35%',
-        key: 'url_key',
-    },
-    {
-        title: 'Action',
-        key: 'action',
-        sorter: true,
-        render: (_, record, index) => {
-            const link = `/catalogs/edit/${record.uuid}`;
-            return (
-                <Space size="middle">
-                    <Link to={link}>Edit</Link>
-                </Space>
-            );
-        },
-    },
-];
-
-// rowSelection objects indicates the need for row selection
-const rowSelection = {
-    onChange: (selectedRowKeys, selectedRows) => {
-        console.log(
-            `selectedRowKeys: ${selectedRowKeys}`,
-            'selectedRows: ',
-            selectedRows,
-        );
-    },
-    onSelect: (record, selected, selectedRows) => {
-        console.log(record, selected, selectedRows);
-    },
-    onSelectAll: (selected, selectedRows, changeRows) => {
-        console.log(selected, selectedRows, changeRows);
-    },
-};
 const App = () => {
     const [data, setData] = useState([]);
+    const handleDelete = (id) => () => {
+        callAPI
+            .delete(`/catalog/${id}`)
+            .then((res) => {
+                const newData = data.filter((item) => item.uuid !== id);
+                setData(newData);
+            })
+            .catch((err) => console.log(err));
+    };
+    const columns = [
+        {
+            title: 'Tên danh mục',
+            dataIndex: 'name',
+            key: 'name',
+        },
+        {
+            title: 'Trạng thái',
+            dataIndex: 'status',
+            key: 'status',
+            width: '25%',
+            filters: [
+                { text: 'Enable', value: ['Enable'] },
+                { text: 'Disable', value: ['Disable'] },
+                { text: 'All Status', value: ['Enable', 'Disable'] },
+            ],
+            onFilter: (value, record) => {
+                console.log(value);
+                return value.indexOf(record.status) >= 0;
+            },
+            filterMultiple: false,
+            defaultFilteredValue: ['Enable', 'Disable'],
+            render: (status) => {
+                if (status === 'Enable')
+                    return <Badge status="success" text={status} />;
+                else return <Badge status="error" text={status} />;
+            },
+        },
+        {
+            title: 'URL key',
+            dataIndex: 'url_key',
+            width: '35%',
+            key: 'url_key',
+            render: (url_key) => <i>{url_key}</i>,
+        },
+        {
+            title: 'Action',
+            key: 'action',
+            render: (_, record, index) => {
+                const link = `/catalogs/edit/${record.uuid}`;
+                return (
+                    <Space size="middle">
+                        <Button type="link">
+                            <Link to={link}>Edit</Link>
+                        </Button>
+                        <Button onClick={handleDelete(record.uuid)}>
+                            Delete
+                        </Button>
+                    </Space>
+                );
+            },
+        },
+    ];
     useEffect(() => {
         (async () => {
             try {
@@ -65,9 +78,7 @@ const App = () => {
             }
         })();
     }, []);
-    // const handleOnRow = (record, index) => {
-    //     navigate(`catalogs/edit/${record.uuid}`);
-    // };
+
     return (
         <>
             <Space
@@ -78,13 +89,10 @@ const App = () => {
             ></Space>
             <Table
                 columns={columns}
-                rowSelection={{
-                    ...rowSelection,
-                }}
                 indentSize={25}
                 dataSource={data}
                 rowKey={'id'}
-                // onRow={handleOnRow}
+                bordered={true}
             />
         </>
     );

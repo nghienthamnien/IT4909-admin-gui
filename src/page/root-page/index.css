@@ -8,3 +8,6 @@
     width: calc(100% - 16rem);
     min-height: calc(100vh-56px);
 }
+.ant-form-item {
+    min-width: 400px;
+}

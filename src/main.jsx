@@ -10,6 +10,9 @@ import LoginPage from './page/login-page';
 import SignupPage from './page/add-employee-page';
 import store from './app/store';
 import CatalogPage from './page/catalog-page';
+import AttributePage from './page/attribute-page';
+import NewAttributePage from './page/attribute-page/new-attribute-page';
+import NewCatalogPage from './page/catalog-page/new-catalog';
 
 const router = createBrowserRouter([
     {
@@ -40,11 +43,18 @@ const router = createBrowserRouter([
                     },
                 ],
             },
-            { path: 'attributes', children: [{ path: 'new' }] },
+            {
+                path: 'attributes',
+                children: [
+                    { path: 'new', element: <NewAttributePage /> },
+                    { index: true, element: <AttributePage /> },
+                    { path: 'edit/:code' },
+                ],
+            },
             {
                 path: 'catalogs',
                 children: [
-                    { path: 'new' },
+                    { path: 'new', element: <NewCatalogPage /> },
                     { index: true, element: <CatalogPage /> },
                     { path: 'edit/:id' },
                 ],
