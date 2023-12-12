@@ -16,6 +16,7 @@ import NewAttributePage from './page/attribute-page/new-attribute-page';
 import NewCatalogPage from './page/catalog-page/new-catalog';
 import NewProductPage from './page/product-page/new-product-page';
 import ProductPage from './page/product-page/index';
+import EmployeeList from './page/add-employee-page/employee-list';
 
 const router = createBrowserRouter([
     {
@@ -77,7 +78,10 @@ const router = createBrowserRouter([
             },
             {
                 path: 'employees',
-                children: [{ path: 'new', element: <SignupPage /> }],
+                children: [
+                    { path: 'new', element: <SignupPage /> },
+                    { index: true, element: <EmployeeList /> },
+                ],
             },
             { path: 'setting' },
         ],
