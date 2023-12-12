@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { ConfigProvider } from 'antd';
 import './index.css';
 import ProtectedRoute from './page/root-page';
 import DashBoard from './page/dashboard-page';
@@ -13,6 +14,7 @@ import CatalogPage from './page/catalog-page';
 import AttributePage from './page/attribute-page';
 import NewAttributePage from './page/attribute-page/new-attribute-page';
 import NewCatalogPage from './page/catalog-page/new-catalog';
+import NewProductPage from './page/product-page/new-product-page';
 
 const router = createBrowserRouter([
     {
@@ -40,6 +42,7 @@ const router = createBrowserRouter([
                 children: [
                     {
                         path: 'new',
+                        element: <NewProductPage />,
                     },
                 ],
             },
@@ -82,7 +85,18 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <Provider store={store}>
-            <RouterProvider router={router} />
+            <ConfigProvider
+                theme={{
+                    components: {
+                        Form: {
+                            labelFontSize: '16px',
+                            labelColor: 'rgba(60, 60, 60, 0.8)',
+                        },
+                    },
+                }}
+            >
+                <RouterProvider router={router} />
+            </ConfigProvider>
         </Provider>
     </React.StrictMode>,
 );
