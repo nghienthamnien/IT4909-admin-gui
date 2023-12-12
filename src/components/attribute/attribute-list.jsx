@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Space, Table, Tag } from 'antd';
-import callAPI from '../../api/callAPI';
 import { Link } from 'react-router-dom';
 
-const App = () => {
+import { Button, Space, Table, Tag, message } from 'antd';
+import callAPI from '../../api/callAPI';
+
+function App() {
     const [data, setData] = useState([]);
     const handleDelete = (id) => () => {
         callAPI
             .delete(`/attribute/${id}`)
             .then((res) => {
-                console.log(res.data.msg);
                 const newData = data.filter((item) => item.attribute_id !== id);
                 setData(newData);
             })
-            .catch((err) => console.log(err));
+            .catch();
     };
     useEffect(() => {
         (async () => {
             try {
                 const res = await callAPI('/attribute');
-                console.log(res);
+
                 setData(res.data.payload);
             } catch (error) {
-                console.log(error);
+                message.error(error);
             }
         })();
     }, []);
@@ -52,22 +52,20 @@ const App = () => {
             },
             filterMultiple: false,
             defaultFilteredValue: ['all'],
-            render: (type) => {
-                return (
-                    <Tag>
-                        {((type) => {
-                            switch (type) {
-                                case 1:
-                                    return 'Multi Select';
-                                case 2:
-                                    return 'Text';
-                                default:
-                                    return 'Select';
-                            }
-                        })(type)}
-                    </Tag>
-                );
-            },
+            render: (type) => (
+                <Tag>
+                    {((selectType) => {
+                        switch (selectType) {
+                            case 1:
+                                return 'Multi Select';
+                            case 2:
+                                return 'Text';
+                            default:
+                                return 'Select';
+                        }
+                    })(type)}
+                </Tag>
+            ),
         },
         {
             title: 'Visible',
@@ -79,7 +77,6 @@ const App = () => {
                 { text: 'All', value: 'all' },
             ],
             onFilter: (value, record) => {
-                console.log(value, record);
                 if (value === 'all') return true;
                 return record.visible;
             },
@@ -125,5 +122,5 @@ const App = () => {
             />
         </>
     );
-};
+}
 export default App;

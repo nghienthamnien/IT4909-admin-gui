@@ -11,6 +11,7 @@ import {
 } from 'antd';
 import callAPI from '../../api/callAPI';
 import ProductEntity from './product-entity';
+import { useNavigate } from 'react-router-dom';
 
 const { TextArea } = Input;
 const normFile = (e) => {
@@ -33,7 +34,7 @@ const FormDisabledDemo = () => {
             }
         })();
     }, []);
-
+    const navigate = useNavigate();
     const handleSelect = (value, node, _) => {
         callAPI
             .get(`attribute/${value}`)
@@ -76,7 +77,10 @@ const FormDisabledDemo = () => {
                     'Content-Type': 'multipart/form-data',
                 },
             })
-            .then(({ data }) => console.log(data))
+            .then(({ data }) => {
+                console.log(data);
+                navigate('/products');
+            })
             .catch((err) => console.log(err));
     };
 

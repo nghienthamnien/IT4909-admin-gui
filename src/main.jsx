@@ -15,6 +15,7 @@ import AttributePage from './page/attribute-page';
 import NewAttributePage from './page/attribute-page/new-attribute-page';
 import NewCatalogPage from './page/catalog-page/new-catalog';
 import NewProductPage from './page/product-page/new-product-page';
+import ProductPage from './page/product-page/index';
 
 const router = createBrowserRouter([
     {
@@ -44,6 +45,11 @@ const router = createBrowserRouter([
                         path: 'new',
                         element: <NewProductPage />,
                     },
+                    {
+                        index: true,
+                        element: <ProductPage />,
+                    },
+                    { path: 'edit/:uuid' },
                 ],
             },
             {

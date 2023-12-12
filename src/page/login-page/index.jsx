@@ -1,10 +1,11 @@
+import React from 'react';
 import './index.css';
 import LoginForm from '../../components/login-form';
 import Header from '../../components/header';
 import { setTitle } from '../../util/setTitle';
 import Footer from '../../components/footer';
 
-const LoginPage = () => {
+function LoginPage() {
     setTitle('Login');
     return (
         <>
@@ -22,6 +23,6 @@ const LoginPage = () => {
             <Footer />
         </>
     );
-};
+}
 
 export default LoginPage;

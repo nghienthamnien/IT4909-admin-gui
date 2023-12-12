@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const authToken = localStorage.getItem('auth_token');
 const initialState = { isAuthenticate: !!authToken };
@@ -8,12 +8,11 @@ const authsSlice = createSlice({
     initialState,
     reducers: {
         updateAuthenticate(state, action) {
+            // eslint-disable-next-line no-param-reassign
             state.isAuthenticate = action.payload;
         },
     },
 });
-
-export const login = createAsyncThunk('auths/addToken', async (user) => {});
 
 export const { updateAuthenticate } = authsSlice.actions;
 

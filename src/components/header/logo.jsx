@@ -5,7 +5,12 @@ export default function Logo() {
     return (
         <div className="header-logo">
             <a href="/">
-                <img src={mainLogo} alt="" />
+                <img
+                    src={
+                        mainLogo
+                    }
+                    alt=""
+                />
             </a>
         </div>
     );

@@ -25,13 +25,12 @@ api.interceptors.request.use(
         // Check if the access token is present
         const accessToken = localStorage.getItem('auth_token');
         if (accessToken) {
+            // eslint-disable-next-line no-param-reassign
             config.headers.Authorization = `Bearer ${accessToken}`;
         }
         return config;
     },
-    (error) => {
-        return Promise.reject(error);
-    },
+    (error) => Promise.reject(error),
 );
 
 // Add a response interceptor
@@ -53,7 +52,7 @@ api.interceptors.response.use(
                 originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
                 return axios(originalRequest);
             } catch (refreshError) {
-                console.error('Failed to refresh token:', refreshError);
+                return refreshError;
             }
         }
 

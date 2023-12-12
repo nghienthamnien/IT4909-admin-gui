@@ -1,12 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { Outlet, Navigate, useLocation } from 'react-router-dom';
+
 import Header from '../../components/header';
 import SiderBar from '../../components/siderbar';
 import './index.css';
-import { useSelector } from 'react-redux';
-import { Outlet, Navigate, useLocation } from 'react-router-dom';
 import Footer from '../../components/footer';
 
-const ProtectedRoute = () => {
+function ProtectedRoute() {
     const isAuthenticate = useSelector((state) => state.auths.isAuthenticate);
     const location = useLocation();
     return isAuthenticate ? (
@@ -20,11 +21,11 @@ const ProtectedRoute = () => {
         </>
     ) : (
         <Navigate
-            to={'/auth/login'}
+            to="/auth/login"
             replace
             state={{ prevPath: location.pathname }}
         />
     );
-};
+}
 
 export default ProtectedRoute;
