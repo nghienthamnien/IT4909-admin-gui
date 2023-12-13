@@ -64,7 +64,7 @@ const App = () => {
             ],
             onFilter: (value, record) => {
                 if (value === 'all') return true;
-                return record.status;
+                return record.status === value;
             },
             filterMultiple: false,
             defaultFilteredValue: ['all'],

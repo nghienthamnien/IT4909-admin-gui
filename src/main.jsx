@@ -17,6 +17,7 @@ import NewCatalogPage from './page/catalog-page/new-catalog';
 import NewProductPage from './page/product-page/new-product-page';
 import ProductPage from './page/product-page/index';
 import EmployeeList from './page/add-employee-page/employee-list';
+import CustomerPage from './page/customer-page';
 
 const router = createBrowserRouter([
     {
@@ -26,7 +27,13 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <DashBoard />,
+                element: (
+                    <>
+                        <CustomerPage />
+                        <ProductPage />
+                        <EmployeeList />
+                    </>
+                ),
             },
             {
                 path: 'orders',
@@ -71,6 +78,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'customers',
+                element: <CustomerPage />,
             },
             {
                 path: 'coupons',
